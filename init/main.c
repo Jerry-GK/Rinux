@@ -1,11 +1,11 @@
-#include "print.h"
+#include "printk.h"
 #include "sbi.h"
 
 extern void test();
 
 int start_kernel() {
-    puti(2022);
-    puts(" Hello RISC-V\n");
+    
+    printk("Hello Rinux!\n");
 
     test(); // DO NOT DELETE !!!
 

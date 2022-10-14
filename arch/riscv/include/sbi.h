@@ -2,6 +2,7 @@
 #define _SBI_H
 
 #define SBI_PUTCHAR 0x1
+#define SBI_SETTIMER 0x00
 
 #include "types.h"
 
