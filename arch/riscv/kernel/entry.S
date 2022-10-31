@@ -43,7 +43,7 @@ _traps:
     csrr t0, sepc
     sd t0, 31*reg_size(sp)
 
-    # 2. call trap_handler (sscratch ??)
+    # 2. call trap_handler (sscratch ??) (pass a0, a1 as parameters)
     csrrw t0, sscratch, x0
     sd t0, 1*reg_size(sp)
 
@@ -92,3 +92,53 @@ _traps:
 
     # 4. return from trap
     sret
+
+
+    .extern dummy
+    .global __dummy
+__dummy:
+    # YOUR CODE HERE
+    la t0, dummy
+    csrw sepc, t0
+    sret
+
+
+    .globl __switch_to
+__switch_to:
+    # save state to prev process
+    # YOUR CODE HERE
+    # a0: prev
+    # a1: next
+    # bias is based on the structure of task_struct
+    sd ra, 5*reg_size(a0)
+    sd sp, 6*reg_size(a0)
+    sd s0, 7*reg_size(a0)
+    sd s1, 8*reg_size(a0)
+    sd s2, 9*reg_size(a0)
+    sd s3, 10*reg_size(a0)
+    sd s4, 11*reg_size(a0)
+    sd s5, 12*reg_size(a0)
+    sd s6, 13*reg_size(a0)
+    sd s7, 14*reg_size(a0)
+    sd s8, 15*reg_size(a0)
+    sd s9, 16*reg_size(a0)
+    sd s10, 17*reg_size(a0)
+    sd s11, 18*reg_size(a0)
+
+    # restore state from next process
+    # YOUR CODE HERE
+    ld ra, 5*reg_size(a1)
+    ld sp, 6*reg_size(a1)
+    ld s0, 7*reg_size(a1)
+    ld s1, 8*reg_size(a1)
+    ld s2, 9*reg_size(a1)
+    ld s3, 10*reg_size(a1)
+    ld s4, 11*reg_size(a1)
+    ld s5, 12*reg_size(a1)
+    ld s6, 13*reg_size(a1)
+    ld s7, 14*reg_size(a1)
+    ld s8, 15*reg_size(a1)
+    ld s9, 16*reg_size(a1)
+    ld s10, 17*reg_size(a1)
+    ld s11, 18*reg_size(a1)
+    ret

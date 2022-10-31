@@ -4,5 +4,10 @@
 // Please do not modify
 
 void test() {
-    while (1);
+    int i = 0;
+    //infinite loop
+    while (1)
+    {
+
+    }
 }
