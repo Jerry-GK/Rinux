@@ -52,6 +52,7 @@ void kfreerange(char *start, char *end) {
 
 void mm_init(void) {
     kmem.freelist = NULL;
-    kfreerange(_ekernel, (char *)PHY_END);
+    uint64 vm_bound = VM_START + PHY_SIZE;
+    kfreerange(_ekernel, (char *)(vm_bound));
     printk("[Initialize] Memory initialization done!\n");
 }

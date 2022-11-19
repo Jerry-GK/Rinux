@@ -11,7 +11,7 @@ void exception_handler(unsigned long scause, unsigned long sepc)
 {
     //ignore
     if(exit==0)
-        printk("[S] Exeception happens!!!!!!!!!!!!!!!!!!!!!\n");
+        printk("[S] Exeception happens!\n");
     exit = 1;
 }
 
